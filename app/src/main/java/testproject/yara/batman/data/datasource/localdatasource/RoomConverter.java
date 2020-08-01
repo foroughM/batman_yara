@@ -1,4 +1,4 @@
-package testproject.yara.batman.data.datasource;
+package testproject.yara.batman.data.datasource.localdatasource;
 
 import androidx.room.TypeConverter;
 

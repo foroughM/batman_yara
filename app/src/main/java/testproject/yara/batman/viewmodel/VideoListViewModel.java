@@ -12,7 +12,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import testproject.yara.batman.BatmanApplication;
-import testproject.yara.batman.data.datasource.Resource;
+import testproject.yara.batman.data.datasource.remotedatasource.Resource;
 import testproject.yara.batman.data.datasource.VideoRepository;
 import testproject.yara.batman.data.model.Video;
 

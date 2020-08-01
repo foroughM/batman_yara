@@ -12,6 +12,9 @@ import javax.inject.Singleton;
 
 import retrofit2.Call;
 import testproject.yara.batman.data.api.BatmanApi;
+import testproject.yara.batman.data.datasource.localdatasource.VideoDao;
+import testproject.yara.batman.data.datasource.remotedatasource.NetworkBoundResource;
+import testproject.yara.batman.data.datasource.remotedatasource.Resource;
 import testproject.yara.batman.data.model.RemoteResponse;
 import testproject.yara.batman.data.model.Video;
 

@@ -7,12 +7,10 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import testproject.yara.batman.BatmanApplication;
-import testproject.yara.batman.data.datasource.Resource;
+import testproject.yara.batman.data.datasource.remotedatasource.Resource;
 import testproject.yara.batman.data.datasource.VideoDetailsRepository;
 import testproject.yara.batman.data.model.VideoDetails;
 

@@ -1,4 +1,4 @@
-package testproject.yara.batman.data.datasource;
+package testproject.yara.batman.data.datasource.localdatasource;
 
 
 import androidx.lifecycle.LiveData;
@@ -15,15 +15,15 @@ import static testproject.yara.batman.data.Constants.LOCAL_TIMEOUT_IN_MILLISEC;
 public abstract class VideoDetailsDao {
 
     @Query("SELECT * FROM video_details WHERE imdbId = :imdbId")
-    abstract LiveData<VideoDetails> getVideoDetails(String imdbId);
+    public abstract LiveData<VideoDetails> getVideoDetails(String imdbId);
 
     @Insert(onConflict = REPLACE)
-    abstract void saveAll(VideoDetails videoDetails);
+    public abstract void saveAll(VideoDetails videoDetails);
 
     @Query("DELETE FROM video_details WHERE imdbId = :imdbId")
-    abstract void delete(String imdbId);
+    public abstract void delete(String imdbId);
 
-    boolean isExpired(VideoDetails videoDetails) {
+    public boolean isExpired(VideoDetails videoDetails) {
         if (videoDetails == null)
             return true;
         return videoDetails.getUpdateDate() <= System.currentTimeMillis() - LOCAL_TIMEOUT_IN_MILLISEC;

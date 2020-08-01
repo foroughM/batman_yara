@@ -59,6 +59,7 @@ public class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.Vide
             binding.setVideo(video);
             binding.categoryHolder.setOnClickListener(v -> Navigation.findNavController(binding.getRoot())
                     .navigate(VideoListFragmentDirections.showVideoDetails(video.getImdbId())));
+            binding.executePendingBindings();
         }
     }
 }

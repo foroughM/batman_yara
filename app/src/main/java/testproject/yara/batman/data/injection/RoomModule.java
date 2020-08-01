@@ -6,9 +6,9 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import testproject.yara.batman.data.datasource.RoomDB;
-import testproject.yara.batman.data.datasource.VideoDao;
-import testproject.yara.batman.data.datasource.VideoDetailsDao;
+import testproject.yara.batman.data.datasource.localdatasource.RoomDB;
+import testproject.yara.batman.data.datasource.localdatasource.VideoDao;
+import testproject.yara.batman.data.datasource.localdatasource.VideoDetailsDao;
 
 @Module
 public class RoomModule {

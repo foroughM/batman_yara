@@ -1,4 +1,4 @@
-package testproject.yara.batman.data.datasource;
+package testproject.yara.batman.data.datasource.remotedatasource;
 
 import android.os.AsyncTask;
 

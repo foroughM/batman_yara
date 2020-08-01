@@ -55,6 +55,7 @@ public class VideoRateAdapter extends RecyclerView.Adapter<VideoRateAdapter.Vide
 
         void bind(VideoRate videoRate) {
             binding.setRate(videoRate);
+            binding.executePendingBindings();
         }
     }
 }
