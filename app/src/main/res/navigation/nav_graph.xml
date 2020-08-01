@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/videoListFragment">
+
+    <fragment
+        android:id="@+id/videoListFragment"
+        android:name="testproject.yara.batman.view.fragment.VideoListFragment"
+        android:label="VideoListFragment"
+        tools:layout="@layout/video_list">
+        <action
+            android:id="@+id/show_video_details"
+            app:destination="@id/videoDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/videoDetailFragment"
+        android:name="testproject.yara.batman.view.fragment.VideoDetailFragment"
+        android:label="VideoDetailFragment">
+
+        <argument
+            android:name="ImdbId"
+            app:argType="string" />
+
+    </fragment>
+
+</navigation>

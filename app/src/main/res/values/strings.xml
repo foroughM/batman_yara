@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">batman_yara</string>
+    <string name="welcome_text">Hello, what do you want to watch?</string>
+    <string name="actors_key">Actors</string>
+    <string name="genre_key">Genre</string>
+    <string name="release_key">Release</string>
+    <string name="director_key">Director</string>
+    <string name="language_key">Language</string>
+    <string name="country_key">Country</string>
+    <string name="writer_key">Writer</string>
+    <string name="awards_key">Awards</string>
+</resources>

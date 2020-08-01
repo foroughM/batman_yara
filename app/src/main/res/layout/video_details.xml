@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="loadingState"
+            type="testproject.yara.batman.util.enums.LoadingState" />
+
+        <variable
+            name="errorMessage"
+            type="String" />
+
+        <variable
+            name="videoDetails"
+            type="testproject.yara.batman.data.model.VideoDetails" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        custom:toast="@{errorMessage}">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/collapsing_height"
+                android:fitsSystemWindows="true"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
+                    app:layout_scrollFlags="scroll|enterAlways|snap|exitUntilCollapsed">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/video_background"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:scaleType="centerCrop"
+                            android:src="@color/colorPrimaryDark"
+                            app:layout_collapseMode="parallax"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            custom:image_url="@{videoDetails.poster}" />
+
+                        <ImageView
+                            android:id="@+id/back_btn"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_margin="@dimen/back_btn_margin"
+                            android:src="@drawable/back_white_24dp"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintHeight_percent="0.1"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/video_title"
+                        style="@style/TextAppearance.AppCompat.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/text_view_margin"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:maxLines="2"
+                        android:textColor="@color/caption_color"
+                        app:layout_constraintHorizontal_bias="0.1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        custom:time="@{videoDetails.runtime}"
+                        custom:title="@{videoDetails.title}" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rate_rv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/rate_rv_height"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/video_title" />
+
+                    <TextView
+                        android:id="@+id/video_plot"
+                        style="@style/video_details_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@{videoDetails.plot}"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/rate_rv" />
+
+                    <TextView
+                        android:id="@+id/video_actors_key"
+                        style="@style/video_details_key_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/actors_key"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/video_plot" />
+
+                    <TextView
+                        android:id="@+id/video_actors_val"
+                        style="@style/video_details_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@{videoDetails.actors}"
+                        app:layout_constraintLeft_toRightOf="@id/video_actors_key"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/video_plot" />
+
+                    <TextView
+                        android:id="@+id/video_awards_key"
+                        style="@style/video_details_key_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/awards_key"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/video_actors_val" />
+
+                    <TextView
+                        android:id="@+id/video_awards_val"
+                        style="@style/video_details_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@{videoDetails.awards}"
+                        app:layout_constraintLeft_toRightOf="@id/video_awards_key"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/video_actors_val" />
+
+                    <TextView
+                        android:id="@+id/video_genre_key"
+                        style="@style/video_details_key_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/genre_key"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/video_awards_val" />
+
+                    <TextView
+                        android:id="@+id/video_genre_val"
+                        style="@style/video_details_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@{videoDetails.genre}"
+                        app:layout_constraintLeft_toRightOf="@id/video_genre_key"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/video_awards_val" />
+
+                    <TextView
+                        android:id="@+id/video_release_key"
+                        style="@style/video_details_key_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/release_key"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/video_genre_val" />
+
+                    <TextView
+                        android:id="@+id/video_release_val"
+                        style="@style/video_details_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@{videoDetails.released}"
+                        app:layout_constraintLeft_toRightOf="@id/video_release_key"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/video_genre_val" />
+
+                    <TextView
+                        android:id="@+id/video_director_key"
+                        style="@style/video_details_key_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/director_key"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/video_release_val" />
+
+                    <TextView
+                        android:id="@+id/video_director_val"
+                        style="@style/video_details_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@{videoDetails.director}"
+                        app:layout_constraintLeft_toRightOf="@id/video_director_key"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/video_release_val" />
+
+                    <TextView
+                        android:id="@+id/video_language_key"
+                        style="@style/video_details_key_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/language_key"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/video_director_val" />
+
+                    <TextView
+                        android:id="@+id/video_language_val"
+                        style="@style/video_details_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@{videoDetails.language}"
+                        app:layout_constraintLeft_toRightOf="@id/video_language_key"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/video_director_val" />
+
+                    <TextView
+                        android:id="@+id/video_country_key"
+                        style="@style/video_details_key_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/country_key"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/video_language_val" />
+
+                    <TextView
+                        android:id="@+id/video_country_val"
+                        style="@style/video_details_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@{videoDetails.country}"
+                        app:layout_constraintLeft_toRightOf="@id/video_country_key"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/video_language_val" />
+
+                    <TextView
+                        android:id="@+id/video_writer_key"
+                        style="@style/video_details_key_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/writer_key"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/video_country_val" />
+
+                    <TextView
+                        android:id="@+id/video_writer_val"
+                        style="@style/video_details_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@{videoDetails.writer}"
+                        app:layout_constraintLeft_toRightOf="@id/video_writer_key"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/video_country_val" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.core.widget.NestedScrollView>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <testproject.yara.batman.view.customview.CustomLoadingView
+            android:id="@+id/loading"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.15"
+            app:state="@{loadingState}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

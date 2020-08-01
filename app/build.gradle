@@ -1,0 +1,86 @@
+apply plugin: 'com.android.application'
+
+ext.versions = [
+        lifecycle: '2.1.0',
+        extention: '2.2.0',
+        retrofit : '2.7.1',
+        nav_version : '2.3.0',
+        dagger: '2.20',
+        room_version: '2.2.3'
+]
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "testproject.yara.batman"
+        minSdkVersion 15
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
+        debug {
+            buildConfigField "String", "BATMAN_IP", "\"http://www.omdbapi.com/\""
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BATMAN_IP", "\"http://www.omdbapi.com/\""
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.12'
+    /*
+  Retrofit
+   */
+    implementation "com.squareup.retrofit2:retrofit:${versions.retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}"
+    /*
+ Navigation Controller
+  */
+    implementation "androidx.navigation:navigation-fragment:${versions.nav_version}"
+    implementation "androidx.navigation:navigation-ui:${versions.nav_version}"
+    /*
+   LiveData
+    */
+    implementation "androidx.lifecycle:lifecycle-runtime:${versions.lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-extensions:${versions.extention}"
+    implementation "androidx.lifecycle:lifecycle-common-java8:${versions.lifecycle}"
+    /*
+Dagger
+ */
+    implementation "com.google.dagger:dagger-android:${versions.dagger}"
+    implementation "com.google.dagger:dagger:${versions.dagger}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${versions.dagger}"
+    annotationProcessor "com.google.dagger:dagger-android-processor:${versions.dagger}"
+    /*
+    Glide
+     */
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    /*
+     Room
+      */
+    implementation "androidx.room:room-runtime:${versions.room_version}"
+    implementation "androidx.room:room-rxjava2:${versions.room_version}"
+    annotationProcessor "androidx.room:room-compiler:${versions.room_version}"
+
+}
+apply plugin: "androidx.navigation.safeargs"

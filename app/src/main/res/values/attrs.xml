@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RoundRectangle">
+        <attr name="backgroundColor" format="color" />
+
+        <attr name="topRightCorner" format="dimension" />
+        <attr name="topLeftCorner" format="dimension" />
+        <attr name="bottomRightCorner" format="dimension" />
+        <attr name="bottomLeftCorner" format="dimension" />
+    </declare-styleable>
+
+</resources>
